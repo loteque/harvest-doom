@@ -1,0 +1,7 @@
+[gd_resource type="AudioEffectReverb" format=2]
+
+[resource]
+resource_name = "Reverb"
+predelay_msec = 75.0
+room_size = 0.7
+wet = 0.3
