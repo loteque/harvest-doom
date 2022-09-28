@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/AStar.gd" type="Script" id=1]
 [ext_resource path="res://src/Controller.gd" type="Script" id=2]
 [ext_resource path="res://src/Unit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Music.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 100, 0.02, 100 )
@@ -47,3 +48,5 @@ material/0 = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true
+
+[node name="Music" parent="." instance=ExtResource( 4 )]
