@@ -1,0 +1,30 @@
+- Pitch: 
+  Unlock plants, collect souls, and transform a liminal space into your dream Eldritch garden.
+- Setting:
+  interior of a huge indoor Cyber Mall Plaza that is abandoned and derelict.
+- The antagonist:
+  Stupid humans stuck in an eldritch nightmare doomed to wander and trample your beautiful garden.
+- The Protagonist:
+  You play as the eldritch horror 
+- Strategy:
+  Use plants to organize a garden that maximally extracts the souls lost in the cyber mall
+- Plant Types:
+  --attractors: spawn humans off screen and attract the humans towards the attractor plant, they do a small amount of damage when stepped on by a human and if they do lethal damage they produce soul, the resource of the game.
+  --attackers: do damage to the humans as they wander towards the attractors.
+- The main loop:
+  Collect souls.
+  Spend souls to either research new plants or plant new plants.
+  Try to grow a garden that is both aesthetically pleasing to you but also good at eating souls.
+- Gameplay:
+  Room starts with a few corpses scattered around with souls floating above them
+  Plants can only be placed in corpses
+  Humans spawn off screen once the player places down an attractor plant.
+  Humans will wander towards the attractor plants disregarding the garden doing damage to the plants and disabling their abilities for a small amount of time.
+  Player places down attacker plants to do damage to the human within the lethal amount of an attractor plant.
+  If a human wanders into an attractor plant and the attracotor plant does lethal damage then a soul is produced.
+  Player collects the souls from the attractor plants
+  Player drags corpses around to where they want a garden bed
+  Player uses souls to research new plants or plant new plants
+  Player does this until they are satisfied.
+  Stretch Goal: Online garden Save Game Sharing.
+ 
