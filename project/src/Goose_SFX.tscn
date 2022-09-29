@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://asset/Audio/SFX/GOOSE_FLAPPING.wav" type="AudioStream" id=1]
+[ext_resource path="res://asset/Audio/SFX/GOOSE_FOOTSTEP_SINGULAR.wav" type="AudioStream" id=2]
+
+[node name="Goose_SFX" type="Spatial"]
+
+[node name="Flapping" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
