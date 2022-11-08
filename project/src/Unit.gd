@@ -19,6 +19,9 @@ func _physics_process(delta: float) -> void:
 		new_velocity = lerp(current_velocity, Vector3.ZERO, lerp_weight)
 	current_velocity = move_and_slide(new_velocity)
 
+func update_path(new_path: Array):
+	path = new_path
+	find_next_point_in_path()
 
 func find_next_point_in_path():
 	if path.size() > 0:
@@ -29,6 +32,4 @@ func find_next_point_in_path():
 		current_target = Vector3.INF
 
 
-func update_path(new_path: Array):
-	path = new_path
-	find_next_point_in_path()
+
