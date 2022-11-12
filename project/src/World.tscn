@@ -42,3 +42,5 @@ autoplay = true
 bus = "Ambience"
 
 [node name="StaticUI" parent="." instance=ExtResource( 2 )]
+
+[node name="DynamicUI" parent="." instance=ExtResource( 6 )]
