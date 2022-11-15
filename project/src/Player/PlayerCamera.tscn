@@ -1,6 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
 
 [node name="PlayerCamera" type="Spatial"]
 
-[node name="Camera" type="Camera" parent="."]
+[node name="CameraController" type="Spatial" parent="."]
+script = ExtResource( 1 )
+movement_speed = 20.608
+
+[node name="Camera" type="Camera" parent="CameraController"]
 transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
