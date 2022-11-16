@@ -5,14 +5,12 @@ export (float, 0, 100) var movement_speed
 export (NodePath) var _map_path
 
 # Set Variables when tree is ready
-onready var camera = get_node("CameraController/Camera")
-onready var ray = get_node("CameraController/RayCast")
-onready var cursor = get_node("CameraController/Cursor")
+onready var camera = get_node("CameraGimbal/Camera")
+onready var ray = get_node("CameraGimbal/RayCast")
+onready var cursor = get_node("CameraGimbal/Cursor")
 
 # Set variables at time of load
 var ray_length = 1000
-var cursor_normal
-var cursor_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,8 +22,8 @@ func _process(delta):
 
 # Overrides the physics_process() function, runs for every tick of the phys engine (constant time)
 func _physics_process(delta):
-	# make a ray from one point extending in a defined direction
-	pass
+	_cursor_follow_camera(delta)
+	
 # Movement functions
 func _move(delta: float) -> void:
 	var velocity = Vector3()
@@ -39,3 +37,11 @@ func _move(delta: float) -> void:
 		velocity += transform.basis.x
 	velocity = velocity.normalized()
 	translation += velocity * delta * movement_speed
+	
+# Cursor functions
+func _cursor_follow_camera(delta: float):
+	if !ray.is_colliding():
+		cursor.visible = false
+	else:
+		cursor.global_transform.origin = ray.get_collision_point()
+		cursor.visible = true
