@@ -19,10 +19,9 @@ data = PoolVector3Array( -50, 0.01, 50, 50, 0.01, 50, -50, -0.01, 50, 50, 0.01, 
 [node name="MallEnvirnmentModel" parent="." instance=ExtResource( 6 )]
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.99908, -0.0114097, -0.041341, 0, 0.963961, -0.266044, 0.0428866, -0.265799, -0.963074, 0, 5, -8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 
-[node name="Ground" type="StaticBody" parent="." groups=["Pathable"]]
-visible = false
+[node name="Ground" type="Area" parent="." groups=["Pathable"]]
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
 mesh = SubResource( 1 )
