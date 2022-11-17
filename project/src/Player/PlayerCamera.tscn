@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
 
-[node name="PlayerCamera" type="Spatial"]
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 0.2, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0.662745, 0.164706, 1 )
+
+[node name="PlayerCamera" type="GridMap"]
+__meta__ = {
+"_editor_clip_": 0
+}
 
 [node name="CameraController" type="Spatial" parent="."]
 script = ExtResource( 1 )
-movement_speed = 20.608
 
-[node name="Camera" type="Camera" parent="CameraController"]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
+[node name="CameraGimbal" type="Spatial" parent="CameraController"]
+transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="CameraController/CameraGimbal"]
+
+[node name="RayCast" type="RayCast" parent="CameraController/CameraGimbal"]
+enabled = true
+cast_to = Vector3( 0, -1, -100 )
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Cursor" type="MeshInstance" parent="CameraController/CameraGimbal"]
+transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
