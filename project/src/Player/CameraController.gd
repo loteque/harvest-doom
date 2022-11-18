@@ -2,7 +2,6 @@ extends Spatial
 
 # Export parameters exposing them to godots editor's inspector panel
 export (float, 0, 100) var movement_speed = 10.0
-export (NodePath) var _map_path
 
 # Set Variables when tree is ready
 onready var _grid_map = get_parent()
@@ -45,7 +44,7 @@ func _move(delta: float) -> void:
 		set_world_grid_cell_item(-1)
 	
 # Cursor functions
-func _cursor_follow_camera(delta: float) -> void:
+func _cursor_follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		cursor.visible = false
 	else:
