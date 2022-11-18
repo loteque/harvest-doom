@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://asset/Font/Press_Start_2P_Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UI/StaticUI.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -14,8 +15,9 @@ default_font = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 2 )
+script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="HighScoreLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -104.0
