@@ -1,24 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Player/PlayerCamera.tscn" type="PackedScene" id=1]
-
-[sub_resource type="BoxShape" id=1]
-
-[sub_resource type="CubeMesh" id=2]
-
-[sub_resource type="SpatialMaterial" id=3]
+[ext_resource path="res://src/Ground.tscn" type="PackedScene" id=2]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 
-[node name="Ground" type="Area" parent="."]
-transform = Transform( 8, 0, 0, 0, 0.02, 0, 0, 0, 8, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
-shape = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+[node name="Ground" parent="." instance=ExtResource( 2 )]
+data = {
+"cells": PoolIntArray( 65535, 65532, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}

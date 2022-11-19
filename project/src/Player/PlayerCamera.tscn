@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
+[ext_resource path="res://src/Player/PlayerCamera.gd" type="Script" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 1, 1, 1 )
@@ -11,6 +12,7 @@ albedo_color = Color( 0, 0.662745, 0.164706, 1 )
 [node name="PlayerCamera" type="GridMap"]
 cell_size = Vector3( 1, 1, 1 )
 cell_center_y = false
+script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0
 }
