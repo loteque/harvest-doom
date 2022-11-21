@@ -20,13 +20,13 @@ func _ready():
 	pass
 # Overides the process() function (Adds functionality to the main loop.)
 func _process(delta):
-	#_move(delta)
-	pass
+	_move(delta)
 	
 # Overrides the physics_process() function, runs for every tick of the phys engine (constant time)
 func _physics_process(delta):
 	print("physics")
 	_cursor_follow_camera(delta)
+	
 # Movement functions
 func _move(delta: float) -> void:
 	var velocity = Vector3()
@@ -49,18 +49,17 @@ func _cursor_follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		cursor.visible = false
 	else:
-		#translategrid to the coords of the ray intersection
-		get_placement_grid().global_transform.origin.y = ray.get_collision_point().y 
 		#convert collison point intro gridmap coordinate
 		grid_map_intersection = get_placement_grid().world_to_map(ray.get_collision_point())
 		#convert gridmap coordinate into worldspace coordinate
 		selection_position = get_placement_grid().map_to_world(grid_map_intersection.x, 
 															 grid_map_intersection.y,
 															 grid_map_intersection.z)
-		#move cursor to converted worldspace coordinte
+		# move cursor to converted worldspace coordinte
 		cursor.global_transform.origin = selection_position
-		#set the cursor to visible
+		# set the cursor to visible
 		cursor.visible = true
+
 # Cursor Helper Functions
 func get_world_grid_cell_item() -> int:
 	return get_placement_grid().get_cell_item(grid_map_intersection.x,
