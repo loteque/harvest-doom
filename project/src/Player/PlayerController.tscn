@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
-[ext_resource path="res://src/Player/PlayerCamera.gd" type="Script" id=2]
+[ext_resource path="res://src/Player/PlayerCcontroller.gd" type="Script" id=2]
+[ext_resource path="res://src/Player/Cursor.gd" type="Script" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 1, 1, 1 )
@@ -15,7 +16,6 @@ script = ExtResource( 2 )
 [node name="CameraController" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 script = ExtResource( 1 )
-scene_root = NodePath("..")
 
 [node name="CameraGimbal" type="Spatial" parent="CameraController"]
 transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0, 0 )
@@ -32,3 +32,4 @@ collide_with_bodies = false
 transform = Transform( 1, 0, 0, 0, 0.153209, -0.642788, 0, 0.128558, 0.766044, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+script = ExtResource( 3 )

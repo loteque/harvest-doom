@@ -11,12 +11,11 @@
 
 [node name="World" type="Spatial"]
 
-[node name="MallEnvirnmentModel" parent="." instance=ExtResource( 6 )]
-
-[node name="Ground" parent="." instance=ExtResource( 9 )]
-
 [node name="PlayerController" parent="." instance=ExtResource( 1 )]
-grid_path = NodePath("../Ground")
+
+[node name="PlacementGrid" parent="." instance=ExtResource( 9 )]
+
+[node name="MallEnvirnmentModel" parent="." instance=ExtResource( 6 )]
 
 [node name="Music" parent="." instance=ExtResource( 4 )]
 
