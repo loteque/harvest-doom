@@ -11,12 +11,16 @@ config_version=4
 [application]
 
 config/name="harvest-doom"
-run/main_scene="res://src/World.tscn"
+run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
 [audio]
 
 default_bus_layout="res://src/Audio/default_bus_layout.tres"
+
+[autoload]
+
+Signals="*res://src/Signals.gd"
 
 [input]
 

@@ -29,6 +29,10 @@ func _follow_camera(_delta: float) -> void:
 		# set the cursor to visible
 		visible = true
 
+func detect_soul():
+	if get_world_grid_cell_item() == 0:
+		Signals.emit_signal("souls_detected", 1)
+
 # Cursor Helper Functions
 func get_world_grid_cell_item() -> int:
 	return get_placement_grid().get_cell_item(grid_map_intersection.x,

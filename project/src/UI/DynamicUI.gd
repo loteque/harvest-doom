@@ -10,9 +10,8 @@ onready var radial_menu = get_node("RadialMenu")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# visible = true
 	pass
-
+	
 func _input(event):
 	var menu_should_open = InputMap.event_is_action(event, "ui_open_radial_menu") and event.is_pressed() and !radial_menu.visible
 	var menu_should_close = InputMap.event_is_action(event, "ui_close_radial_menu") and event.is_pressed() and radial_menu.visible
