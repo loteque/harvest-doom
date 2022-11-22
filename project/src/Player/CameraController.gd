@@ -36,4 +36,5 @@ func _move(delta: float) -> void:
 	translation += velocity * delta * player_controller.movement_speed
 	
 	if Input.is_action_just_pressed("ui_accept") and cursor.get_world_grid_cell_item() == 0:
+		cursor.detect_soul()
 		cursor.set_world_grid_cell_item(-1)
