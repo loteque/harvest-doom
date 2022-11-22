@@ -1,16 +1,10 @@
 extends Node
 
+onready var music = get_node("AudioStreamPlayer")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Signals.connect("souls_detected", self, "_on_souls_detected")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_souls_detected(num_souls):
+	yield(get_tree().create_timer(0.5), "timeout")
+	music.play()
