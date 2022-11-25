@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Audio/Ambience.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/Main.gd" type="Script" id=7]
 [ext_resource path="res://src/Mall/MallEnvirnmentModel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Audio/VoiceOver.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SFX.tscn" type="PackedScene" id=10]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
@@ -31,3 +32,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.18389, 0 )
 [node name="DynamicUI" parent="Mall" instance=ExtResource( 5 )]
 
 [node name="VoiceOver" parent="Mall" instance=ExtResource( 9 )]
+
+[node name="SFX" parent="Mall" instance=ExtResource( 10 )]
