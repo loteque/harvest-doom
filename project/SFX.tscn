@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://asset/Audio/SFX/Soul_Collect.wav" type="AudioStream" id=1]
-[ext_resource path="res://src/Audio/SFX.gd" type="Script" id=2]
+[ext_resource path="res://src/Audio/SoulCollect.gd" type="Script" id=2]
+[ext_resource path="res://asset/Audio/SFX/UI_Hover_Select.wav" type="AudioStream" id=3]
+[ext_resource path="res://asset/Audio/SFX/Plant_Attractor.wav" type="AudioStream" id=4]
 
 [node name="SFX" type="Node"]
+
+[node name="SoulCollect" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 script = ExtResource( 2 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoulCollect"]
 stream = ExtResource( 1 )
+unit_db = 2.0
+unit_size = 2.0
 bus = "SFX"
+
+[node name="HoverSelect" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverSelect"]
+stream = ExtResource( 3 )
+
+[node name="PlantAttractor" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlantAttractor"]
+stream = ExtResource( 4 )

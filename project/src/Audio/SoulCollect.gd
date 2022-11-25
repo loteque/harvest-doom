@@ -1,6 +1,6 @@
 extends Node
 
-onready var sfx = get_node("AudioStreamPlayer")
+onready var sfx = get_node("AudioStreamPlayer3D")
 
 func _ready():
 	Signals.connect("souls_detected", self, "_on_souls_detected")
