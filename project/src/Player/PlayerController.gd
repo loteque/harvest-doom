@@ -13,15 +13,19 @@ var high_score: int
 var cursor_pos: int
 
 #PLAYER CONTROLLER METHODS
+func collect_first_soul() -> bool:
+	return(true)
+	
 func get_cursor_position() -> Vector3:
 	return(Vector3(0,0,0))
 
 func get_gridmesh_item_under_cursor() -> Dictionary:
 	return ({"Placeholder Dictionary": "This is a future dictionary of gridmesh items under the cursor",
 			"Item Name": "MeshLib Index"})
-			
+
+# SMOKE TESTS
 func _ready():
-	# smoke tests
 	print("PlayerController interface smoke tests:")
+	print("collected first soul? " + str(collect_first_soul()))
 	print(get_cursor_position())
 	print(get_gridmesh_item_under_cursor())
