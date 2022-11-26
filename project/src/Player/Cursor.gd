@@ -14,6 +14,8 @@ onready var detector = get_node("Detector")
 var ray_grid_map_intersection: Vector3
 # current section position
 var selection_position: Vector3
+# current grid_cell_item for placement
+var grid_cell_menu_item: int = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -27,6 +29,9 @@ func _follow_camera(_delta: float) -> void:
 		visible = true
 
 # CURSOR HELPER FUNCTIONS
+
+func _store_grid_cell_menu_item(item) -> void:
+		grid_cell_menu_item = item
 
 # return the meshlib item at the grid position of the cursor
 func get_world_grid_cell_item() -> int:

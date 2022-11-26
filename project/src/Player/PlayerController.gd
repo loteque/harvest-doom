@@ -25,3 +25,9 @@ func _ready():
 	print("SMOKE TEST: PlayerController")
 	print(get_cursor_position())
 	print(get_gridmesh_item_under_cursor())
+
+# DEVICE INPUTS
+func _process(delta):
+	if Input.is_action_just_pressed("select_attractor"):
+		$CameraController/CameraGimbal/Cursor._store_grid_cell_menu_item(0)
+		print("TEST, PlayerController; grid_cell_menu_item: " + str($CameraController/CameraGimbal/Cursor.grid_cell_menu_item))
