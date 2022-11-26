@@ -1,10 +1,10 @@
 extends MeshInstance
 
-export (NodePath) var scene_root_path = "../../.."
+export (NodePath) var player_controller_path = "../../.."
 export (NodePath) var camera_path = "../../../CameraController/CameraGimbal/Camera"
 export (NodePath) var ray_path = "../../../CameraController/CameraGimbal/RayCast"
 
-onready var scene_root_node: Node = get_node(scene_root_path)
+onready var player_controller_node: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
 
@@ -22,8 +22,8 @@ func _follow_camera(_delta: float) -> void:
 		grid_map_intersection = get_placement_grid().world_to_map(ray.get_collision_point())
 		#convert gridmap coordinate into worldspace coordinate
 		selection_position = get_placement_grid().map_to_world(grid_map_intersection.x, 
-															 grid_map_intersection.y,
-															 grid_map_intersection.z)
+															   grid_map_intersection.y,
+															   grid_map_intersection.z)
 		# move cursor to converted worldspace coordinte
 		global_transform.origin = selection_position
 		# set the cursor to visible
@@ -47,8 +47,8 @@ func set_world_grid_cell_item(mesh_lib_item: int) -> void:
 
 # Handle Dependencies
 func get_placement_grid() -> GridMap:
-	if scene_root_node.placement_grid:
-		return scene_root_node.placement_grid
+	if player_controller_node.placement_grid:
+		return player_controller_node.placement_grid
 	else:
 		print("Warning: No grid configured, please configure a placement grid")
 		var placement_grid = GridMap.new()
