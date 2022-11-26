@@ -20,9 +20,12 @@ func get_gridmesh_item_under_cursor() -> Dictionary:
 	return {"Placeholder Dictionary": "This is a future dictionary of gridmesh items under the cursor",
 			"Item Name": "MeshLib Index"}
 
-# SMOKE TESTS
+func set_gridmesh_item_under_cursor() -> Node:
+	return $CameraController/CameraGimbal/Cursor/Selector
+
 func _ready():
-	print("SMOKE TEST: PlayerController")
+	# TESTS
+	print("TESTS: PlayerController")
 	print(get_cursor_position())
 	print(get_gridmesh_item_under_cursor())
 
