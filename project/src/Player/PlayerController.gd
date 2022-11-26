@@ -14,11 +14,11 @@ var cursor_pos: int
 
 #PLAYER CONTROLLER METHODS
 func get_cursor_position() -> Vector3:
-	return(Vector3(0,0,0))
+	return Vector3(0,0,0)
 
 func get_gridmesh_item_under_cursor() -> Dictionary:
-	return ({"Placeholder Dictionary": "This is a future dictionary of gridmesh items under the cursor",
-			"Item Name": "MeshLib Index"})
+	return {"Placeholder Dictionary": "This is a future dictionary of gridmesh items under the cursor",
+			"Item Name": "MeshLib Index"}
 
 # SMOKE TESTS
 func _ready():
