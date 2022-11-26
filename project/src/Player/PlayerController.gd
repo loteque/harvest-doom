@@ -22,6 +22,6 @@ func get_gridmesh_item_under_cursor() -> Dictionary:
 
 # SMOKE TESTS
 func _ready():
-	print("PlayerController interface smoke tests:")
+	print("SMOKE TEST: PlayerController")
 	print(get_cursor_position())
 	print(get_gridmesh_item_under_cursor())
