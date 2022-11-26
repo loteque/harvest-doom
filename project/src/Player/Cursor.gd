@@ -4,7 +4,7 @@ export (NodePath) var player_controller_path = "../../.."
 export (NodePath) var camera_path = "../../../CameraController/CameraGimbal/Camera"
 export (NodePath) var ray_path = "../../../CameraController/CameraGimbal/RayCast"
 
-onready var player_controller_node: Node = get_node(player_controller_path)
+onready var player_controller: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
 onready var selector = get_node("Selector")
@@ -54,8 +54,8 @@ func get_ray_grid_intersection() -> Vector3:
 # HANDLE DEPS
 
 func get_placement_grid() -> GridMap:
-	if player_controller_node.placement_grid:
-		return player_controller_node.placement_grid
+	if player_controller.placement_grid:
+		return player_controller.placement_grid
 	else:
 		print("Warning: (get_placement_grid) No grid configured, please configure a placement grid configured a default, but it will be ugly...")
 		var placement_grid = GridMap.new()
