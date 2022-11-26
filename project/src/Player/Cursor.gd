@@ -26,7 +26,7 @@ func _follow_camera(_delta: float) -> void:
 		global_transform.origin = get_selection_position()
 		visible = true
 
-# Cursor Helper Functions
+# CURSOR HELPER FUNCTIONS
 
 # return the meshlib item at the grid position of the cursor
 func get_world_grid_cell_item() -> int:
@@ -51,11 +51,12 @@ func get_selection_position() -> Vector3:
 func get_ray_grid_intersection() -> Vector3:
 	return get_placement_grid().world_to_map(ray.get_collision_point())
 
-# Handle Dependencies
+# HANDLE DEPS
+
 func get_placement_grid() -> GridMap:
 	if player_controller_node.placement_grid:
 		return player_controller_node.placement_grid
 	else:
-		print("Warning: No grid configured, please configure a placement grid")
+		print("Warning: (get_placement_grid) No grid configured, please configure a placement grid configured a default, but it will be ugly...")
 		var placement_grid = GridMap.new()
 		return placement_grid
