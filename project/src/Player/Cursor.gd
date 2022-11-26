@@ -1,15 +1,19 @@
 extends MeshInstance
 
-export (NodePath) var scene_root_path = "../../.."
+export (NodePath) var player_controller_path = "../../.."
 export (NodePath) var camera_path = "../../../CameraController/CameraGimbal/Camera"
 export (NodePath) var ray_path = "../../../CameraController/CameraGimbal/RayCast"
 
-onready var scene_root_node: Node = get_node(scene_root_path)
+onready var player_controller_node: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
+onready var selector = get_node("Selector")
+onready var detector = get_node("Detector")
 
-var grid_map_intersection
-var selection_position
+# current ray intersection on gridmap
+var ray_grid_map_intersection: Vector3
+# current section position
+var selection_position: Vector3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -18,38 +22,41 @@ func _follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		visible = false
 	else:
-		#convert collison point intro gridmap coordinate
-		grid_map_intersection = get_placement_grid().world_to_map(ray.get_collision_point())
-		#convert gridmap coordinate into worldspace coordinate
-		selection_position = get_placement_grid().map_to_world(grid_map_intersection.x, 
-															 grid_map_intersection.y,
-															 grid_map_intersection.z)
-		# move cursor to converted worldspace coordinte
-		global_transform.origin = selection_position
-		# set the cursor to visible
+		ray_grid_map_intersection = get_ray_grid_intersection()
+		global_transform.origin = get_selection_position()
 		visible = true
 
-func detect_soul():
-	if get_world_grid_cell_item() == 0:
-		Signals.emit_signal("souls_detected", 1)
+# CURSOR HELPER FUNCTIONS
 
-# Cursor Helper Functions
+# return the meshlib item at the grid position of the cursor
 func get_world_grid_cell_item() -> int:
-	return get_placement_grid().get_cell_item(grid_map_intersection.x,
-											  grid_map_intersection.y,
-											  grid_map_intersection.z)
+	return get_placement_grid().get_cell_item(ray_grid_map_intersection.x,
+											  ray_grid_map_intersection.y,
+											  ray_grid_map_intersection.z)
 
+# insert a meshlib item at the grid position of the cursor
 func set_world_grid_cell_item(mesh_lib_item: int) -> void:
-	get_placement_grid().set_cell_item(grid_map_intersection.x,
-									   grid_map_intersection.y,
-									   grid_map_intersection.z,
+	get_placement_grid().set_cell_item(ray_grid_map_intersection.x,
+									   ray_grid_map_intersection.y,
+									   ray_grid_map_intersection.z,
 									   mesh_lib_item)
 
-# Handle Dependencies
+#convert gridmap coordinate into worldspace coordinate
+func get_selection_position() -> Vector3:
+	return get_placement_grid().map_to_world(ray_grid_map_intersection.x, 
+											 ray_grid_map_intersection.y,
+											 ray_grid_map_intersection.z)
+
+#convert collison point intro gridmap coordinate
+func get_ray_grid_intersection() -> Vector3:
+	return get_placement_grid().world_to_map(ray.get_collision_point())
+
+# HANDLE DEPS
+
 func get_placement_grid() -> GridMap:
-	if scene_root_node.placement_grid:
-		return scene_root_node.placement_grid
+	if player_controller_node.placement_grid:
+		return player_controller_node.placement_grid
 	else:
-		print("Warning: No grid configured, please configure a placement grid")
+		print("Warning: (get_placement_grid) No grid configured, please configure a placement grid configured a default, but it will be ugly...")
 		var placement_grid = GridMap.new()
 		return placement_grid

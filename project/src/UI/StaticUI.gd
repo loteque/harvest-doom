@@ -8,6 +8,5 @@ func _ready():
 
 
 func _on_souls_detected(num_souls) -> void:
-		print("from StaticUI souls collected: %d" % [num_souls])
 		ui_high_score.text = "High Score: " + str(num_souls)
 		ui_soul_count.text = "Souls: " + str(num_souls)
