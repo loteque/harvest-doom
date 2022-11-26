@@ -7,8 +7,8 @@ export (NodePath) var ray_path = "../../../CameraController/CameraGimbal/RayCast
 onready var player_controller_node: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
-onready var select = get_node("Select")
-onready var detect = get_node("Detect")
+onready var selector = get_node("Selector")
+onready var detector = get_node("Detector")
 
 # current ray intersection on gridmap
 var grid_map_intersection: Vector3

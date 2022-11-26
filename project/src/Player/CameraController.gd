@@ -20,7 +20,7 @@ func _process(delta):
 # Overrides the physics_process() function, runs for every tick of the phys engine (constant time)
 func _physics_process(delta):
 	cursor._follow_camera(delta)
-	cursor.select._on_select_first_soul()
+	cursor.selector._on_select_first_soul()
 
 # Movement functions
 func _move(delta: float) -> void:
