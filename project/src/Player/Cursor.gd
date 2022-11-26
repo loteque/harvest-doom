@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Spatial
 
 export (NodePath) var player_controller_path = "../../.."
 export (NodePath) var camera_path = "../../../CameraController/CameraGimbal/Camera"
@@ -9,6 +9,7 @@ onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
 onready var selector = get_node("Selector")
 onready var detector = get_node("Detector")
+onready var projector = get_node("Projector")
 
 # current ray intersection on gridmap
 var ray_grid_map_intersection: Vector3
@@ -31,7 +32,10 @@ func _follow_camera(_delta: float) -> void:
 # CURSOR HELPER FUNCTIONS
 
 func _store_grid_cell_menu_item(item) -> void:
-		grid_cell_menu_item = item
+	grid_cell_menu_item = item
+
+func get_grid_cell_menu_item() -> int:
+	return grid_cell_menu_item
 
 # return the meshlib item at the grid position of the cursor
 func get_world_grid_cell_item() -> int:
