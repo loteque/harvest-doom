@@ -10,8 +10,10 @@ onready var ray = get_node(ray_path)
 onready var select = get_node("Select")
 onready var detect = get_node("Detect")
 
-var grid_map_intersection
-var selection_position
+# current ray intersection on gridmap
+var grid_map_intersection: Vector3
+# current section position
+var selection_position: Vector3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -20,28 +22,34 @@ func _follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		visible = false
 	else:
-		#convert collison point intro gridmap coordinate
-		grid_map_intersection = get_placement_grid().world_to_map(ray.get_collision_point())
-		#convert gridmap coordinate into worldspace coordinate
-		selection_position = get_placement_grid().map_to_world(grid_map_intersection.x, 
-															   grid_map_intersection.y,
-															   grid_map_intersection.z)
-		# move cursor to converted worldspace coordinte
-		global_transform.origin = selection_position
-		# set the cursor to visible
+		grid_map_intersection = get_ray_grid_intersection()
+		global_transform.origin = get_selection_position()
 		visible = true
 
 # Cursor Helper Functions
+
+# return the meshlib item at the grid position of the cursor
 func get_world_grid_cell_item() -> int:
 	return get_placement_grid().get_cell_item(grid_map_intersection.x,
 											  grid_map_intersection.y,
 											  grid_map_intersection.z)
 
+# insert a meshlib item at the grid position of the cursor
 func set_world_grid_cell_item(mesh_lib_item: int) -> void:
 	get_placement_grid().set_cell_item(grid_map_intersection.x,
 									   grid_map_intersection.y,
 									   grid_map_intersection.z,
 									   mesh_lib_item)
+
+#convert gridmap coordinate into worldspace coordinate
+func get_selection_position() -> Vector3:
+	return get_placement_grid().map_to_world(grid_map_intersection.x, 
+											 grid_map_intersection.y,
+											 grid_map_intersection.z)
+
+#convert collison point intro gridmap coordinate
+func get_ray_grid_intersection() -> Vector3:
+	return get_placement_grid().world_to_map(ray.get_collision_point())
 
 # Handle Dependencies
 func get_placement_grid() -> GridMap:
