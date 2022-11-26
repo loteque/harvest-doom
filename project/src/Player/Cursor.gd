@@ -8,6 +8,7 @@ onready var player_controller_node: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
 onready var select = get_node("Select")
+onready var detect = get_node("Detect")
 
 var grid_map_intersection
 var selection_position
@@ -29,10 +30,6 @@ func _follow_camera(_delta: float) -> void:
 		global_transform.origin = selection_position
 		# set the cursor to visible
 		visible = true
-
-func detect_soul():
-	if get_world_grid_cell_item() == 0:
-		Signals.emit_signal("souls_detected", 1)
 
 # Cursor Helper Functions
 func get_world_grid_cell_item() -> int:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://src/Player/PlayerController.gd" type="Script" id=2]
 [ext_resource path="res://src/Player/Cursor.gd" type="Script" id=3]
 [ext_resource path="res://src/Player/Select.gd" type="Script" id=4]
+[ext_resource path="res://src/Player/Detect.gd" type="Script" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 1, 1, 1 )
@@ -37,3 +38,6 @@ script = ExtResource( 3 )
 
 [node name="Select" type="Node" parent="CameraController/CameraGimbal/Cursor"]
 script = ExtResource( 4 )
+
+[node name="Detect" type="Node" parent="CameraController/CameraGimbal/Cursor"]
+script = ExtResource( 5 )
