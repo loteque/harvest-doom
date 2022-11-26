@@ -36,8 +36,8 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 script = ExtResource( 3 )
 
-[node name="Select" type="Node" parent="CameraController/CameraGimbal/Cursor"]
+[node name="Selector" type="Node" parent="CameraController/CameraGimbal/Cursor"]
 script = ExtResource( 4 )
 
-[node name="Detect" type="Node" parent="CameraController/CameraGimbal/Cursor"]
+[node name="Detector" type="Node" parent="CameraController/CameraGimbal/Cursor"]
 script = ExtResource( 5 )
