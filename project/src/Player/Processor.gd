@@ -19,9 +19,12 @@ func _process(delta):
 	
 	# MENU DEVICE INPUTS
 	if Input.is_action_just_pressed("select_attractor"):
-		cursor._store_grid_cell_menu_item(0)
+		cursor._store_grid_cell_menu_item(1)
 		print("TEST, PlayerController; grid_cell_menu_item: " + str(cursor.grid_cell_menu_item))
 		cursor.projector._set_mesh(cursor.get_grid_cell_menu_item())
+	
+	if Input.is_action_just_pressed("ui_accept") and cursor.grid_cell_menu_item:
+		cursor.selector._place_plant()
 		
 func _physics_process(delta):
 	cursor._follow_camera(delta)
