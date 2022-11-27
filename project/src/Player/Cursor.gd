@@ -28,7 +28,7 @@ var grid_cell_menu_item: int = -1
 func _handle_inputs():
 	if Input.is_action_just_pressed("select_attractor"):
 		_store_grid_cell_menu_item(1)
-		print("TEST, PlayerController; grid_cell_menu_item: " + str(grid_cell_menu_item))
+		print("TEST, Cursor; grid_cell_menu_item: " + str(grid_cell_menu_item))
 		projector._set_mesh(get_grid_cell_menu_item())
 	
 	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item:
@@ -36,7 +36,9 @@ func _handle_inputs():
 	
 	if Input.is_action_just_pressed("ui_accept") and detector.is_first_soul():
 		selector._on_select_first_soul()
-
+		player_controller.player_souls = player_controller.change_player_souls(1)
+		print("TEST, Cursor; player_controller.player_souls: " + str(player_controller.player_souls))
+		
 func _follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		visible = false
