@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://asset/RadialMenu/radial-menu-background.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/DynamicUI.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/RadialMenuItem.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/RadialMenu.gd" type="Script" id=4]
+[ext_resource path="res://asset/DynamicUI/RobotFace.png" type="Texture" id=5]
+[ext_resource path="res://src/UI/DialogUI.gd" type="Script" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Container
@@ -106,3 +108,66 @@ self_modulate = Color( 0, 0, 0, 1 )
 margin_right = 56.0
 margin_bottom = 14.0
 text = "Attractor"
+
+[node name="DialogUI" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -510.0
+margin_top = -300.0
+margin_right = 510.0
+margin_bottom = 300.0
+script = ExtResource( 6 )
+
+[node name="DialogBox" type="ColorRect" parent="DialogUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -276.0
+margin_top = -191.0
+margin_right = 268.0
+margin_bottom = 49.0
+color = Color( 0.160784, 0.160784, 0.160784, 1 )
+
+[node name="DialogTextArea" type="ColorRect" parent="DialogUI/DialogBox"]
+margin_left = 14.0
+margin_top = 16.0
+margin_right = 365.0
+margin_bottom = 223.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="DialogText" type="RichTextLabel" parent="DialogUI/DialogBox/DialogTextArea"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = -95.5
+margin_right = 168.5
+margin_bottom = 95.5
+text = "This place would look nice with some plants."
+
+[node name="CharacterInfo" type="ColorRect" parent="DialogUI/DialogBox"]
+margin_left = 373.0
+margin_top = 19.0
+margin_right = 532.0
+margin_bottom = 222.0
+color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+
+[node name="Portrait" type="Sprite" parent="DialogUI/DialogBox/CharacterInfo"]
+position = Vector2( 78.5, 68 )
+scale = Vector2( 0.540698, 0.540698 )
+texture = ExtResource( 5 )
+
+[node name="Name" type="RichTextLabel" parent="DialogUI/DialogBox/CharacterInfo"]
+margin_left = 10.0
+margin_top = 167.0
+margin_right = 151.0
+margin_bottom = 195.0
+text = "AI Voice"
+
+[node name="AdvanceButton" type="Polygon2D" parent="DialogUI/DialogBox"]
+position = Vector2( 249.5, 111 )
+polygon = PoolVector2Array( 58, 74, 100, 74, 79, 102 )
