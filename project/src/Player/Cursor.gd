@@ -25,9 +25,18 @@ var selection_position: Vector3
 # current grid_cell_item for placement
 var grid_cell_menu_item: int = -1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _handle_inputs():
+	if Input.is_action_just_pressed("select_attractor"):
+		_store_grid_cell_menu_item(1)
+		print("TEST, PlayerController; grid_cell_menu_item: " + str(grid_cell_menu_item))
+		projector._set_mesh(get_grid_cell_menu_item())
+	
+	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item:
+		selector._place_plant()
+	
+	if Input.is_action_just_pressed("ui_accept") and detector.is_first_soul():
+		selector._on_select_first_soul()
+
 func _follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		visible = false
