@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Player/CameraController.gd" type="Script" id=1]
 [ext_resource path="res://src/Player/PlayerController.gd" type="Script" id=2]
@@ -12,7 +12,14 @@
 size = Vector3( 1, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0, 0.662745, 0.164706, 1 )
+resource_local_to_scene = true
+albedo_color = Color( 0, 0.662745, 0.0705882, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.388235, 0, 0.584314, 1 )
 
 [node name="PlayerController" type="Spatial"]
 script = ExtResource( 2 )
@@ -48,8 +55,12 @@ script = ExtResource( 5 )
 [node name="Projector" type="Node" parent="CameraController/CameraGimbal/Cursor"]
 script = ExtResource( 6 )
 
-[node name="CursorBaseMesh" type="MeshInstance" parent="CameraController/CameraGimbal/Cursor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[node name="SelectionMesh" type="MeshInstance" parent="CameraController/CameraGimbal/Cursor"]
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 2 )
+
+[node name="AttractorMesh" type="MeshInstance" parent="CameraController/CameraGimbal/Cursor"]
+visible = false
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )

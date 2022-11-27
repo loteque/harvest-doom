@@ -19,8 +19,9 @@ func _process(delta):
 	
 	# MENU DEVICE INPUTS
 	if Input.is_action_just_pressed("select_attractor"):
-		$CameraController/CameraGimbal/Cursor._store_grid_cell_menu_item(0)
-		print("TEST, PlayerController; grid_cell_menu_item: " + str($CameraController/CameraGimbal/Cursor.grid_cell_menu_item))
+		cursor._store_grid_cell_menu_item(0)
+		print("TEST, PlayerController; grid_cell_menu_item: " + str(cursor.grid_cell_menu_item))
+		cursor.projector._set_mesh(cursor.get_grid_cell_menu_item())
 		
 func _physics_process(delta):
 	cursor._follow_camera(delta)

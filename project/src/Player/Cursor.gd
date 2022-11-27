@@ -3,13 +3,20 @@ extends Spatial
 export (NodePath) var player_controller_path = "../../.."
 export (NodePath) var camera_path = "../../../CameraController/CameraGimbal/Camera"
 export (NodePath) var ray_path = "../../../CameraController/CameraGimbal/RayCast"
+export (NodePath) var selector_path = "../../../CameraController/CameraGimbal/Cursor/Selector"
+export (NodePath) var detector_path = "../../../CameraController/CameraGimbal/Cursor/Detector"
+export (NodePath) var projector_path = "../../../CameraController/CameraGimbal/Cursor/Projector"
+export (NodePath) var selection_mesh_path = "../../../CameraController/CameraGimbal/Cursor/SelectionMesh"
+export (NodePath) var attractor_mesh_path = "../../../CameraController/CameraGimbal/Cursor/AttractorMesh"
 
 onready var player_controller: Node = get_node(player_controller_path)
 onready var camera = get_node(camera_path)
 onready var ray = get_node(ray_path)
-onready var selector = get_node("Selector")
-onready var detector = get_node("Detector")
-onready var projector = get_node("Projector")
+onready var selector = get_node(selector_path)
+onready var detector = get_node(detector_path)
+onready var projector = get_node(projector_path)
+onready var selection_mesh = get_node(selection_mesh_path)
+onready var attractor_mesh = get_node(attractor_mesh_path)
 
 # current ray intersection on gridmap
 var ray_grid_map_intersection: Vector3
