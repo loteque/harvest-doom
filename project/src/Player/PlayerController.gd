@@ -24,7 +24,6 @@ func get_gridmesh_item_under_cursor() -> Dictionary:
 func change_player_souls(num_souls) -> int:
 	var changed_player_souls = player_souls + num_souls
 	return changed_player_souls
-	Signals.emit_signal("player_souls_changed", changed_player_souls)
 	
 func _ready():
 	# TESTS
