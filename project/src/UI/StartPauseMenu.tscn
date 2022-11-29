@@ -11,8 +11,8 @@ pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="PauseMenu" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1025.0
+margin_bottom = 601.0
 
 [node name="PauseMenuBackground" type="ColorRect" parent="PauseMenu"]
 self_modulate = Color( 1, 1, 1, 0.784314 )
@@ -61,3 +61,16 @@ margin_right = 530.5
 margin_bottom = 342.0
 text = "Exit"
 script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -456.5
+margin_top = -256.5
+margin_right = 461.5
+margin_bottom = -107.5
+text = "Harvest Doom is a unique game that combines farming mechanics with a tower defense structure set in a liminal landscape that can’t be quite explained; only experienced. You play as an AI that has only one goal in mind, save the plants of their world no matter the cost. Use these plants to harvest human souls and expand your garden in an ever growing and confusing world.
+
+In many ways, this project is in its infancy and transitioning into something bigger. This project started as a wild amalgamation of different ideas only to find out there’s untapped to explore on a larger scale. It will take a long time to reach that finish line and we are uncertain of where it will take us but this has pulled a lot from the ongoing trend and fascination with liminal spaces; a location in between two states of being. All we can do is try to grow in the liminal."
