@@ -33,7 +33,7 @@ func _handle_inputs():
 		projector._set_mesh(get_grid_cell_menu_item())
 	
 	# Place a plant
-	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item and player_controller.player_souls > 0:
+	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item == 1 and player_controller.player_souls > 0:
 		selector._place_plant()
 		player_controller.player_souls = player_controller.change_player_souls(-1)
 		Signals.emit_signal("player_souls_changed", player_controller.player_souls)
