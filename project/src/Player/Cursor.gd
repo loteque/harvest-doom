@@ -22,29 +22,37 @@ onready var attractor_mesh = get_node(attractor_mesh_path)
 var ray_grid_map_intersection: Vector3
 # current section position
 var selection_position: Vector3
+
+# MeshGrid index constants
+var EMPTY_MESHLIB_IDX = -1
+var FIRST_SOUL_MESHLIB_IDX = 0
+var ATTRACTOR_PLANT_MESHLIB_IDX = 1
+
 # current grid_cell_item for placement
-var grid_cell_menu_item: int = -1
+var grid_cell_menu_item: int = EMPTY_MESHLIB_IDX
 
 func _handle_inputs():
-	# Select attractor plant
-	if Input.is_action_just_pressed("select_attractor"):
-		_store_grid_cell_menu_item(1)
-		print("TEST, Cursor; grid_cell_menu_item: " + str(grid_cell_menu_item))
+	# Select attractor plant with the 1 key
+	if Input.is_action_just_pressed("select_attractor") and player_controller.player_souls > 0:
+		_store_grid_cell_menu_item(ATTRACTOR_PLANT_MESHLIB_IDX)
 		projector._set_mesh(get_grid_cell_menu_item())
-	
+		
 	# Place a plant
 	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item == 1 and player_controller.player_souls > 0:
 		selector._place_plant()
-		player_controller.player_souls = player_controller.change_player_souls(-1)
+		player_controller.player_souls = player_controller.change_player_souls(EMPTY_MESHLIB_IDX)
 		Signals.emit_signal("player_souls_changed", player_controller.player_souls)
-		print("TEST, Cursor; player_controller.player_souls: " + str(player_controller.player_souls))
-		
+		if player_controller.player_souls == 0:
+			_store_grid_cell_menu_item(EMPTY_MESHLIB_IDX)
+			projector._set_mesh(get_grid_cell_menu_item())
+	
+	# collect first soul
 	if Input.is_action_just_pressed("ui_accept") and detector.is_first_soul():
 		selector._on_select_first_soul()
 		player_controller.player_souls = player_controller.change_player_souls(1)
 		Signals.emit_signal("player_souls_changed", player_controller.player_souls)
-		print("TEST, Cursor; player_controller.player_souls: " + str(player_controller.player_souls))
-		
+
+# update cursor positon to center of camera at ray intersection with ground grid
 func _follow_camera(_delta: float) -> void:
 	if !ray.is_colliding():
 		visible = false
@@ -52,6 +60,12 @@ func _follow_camera(_delta: float) -> void:
 		ray_grid_map_intersection = get_ray_grid_intersection()
 		global_transform.origin = get_selection_position()
 		visible = true
+
+# Handle Signals from radial menu
+func _on_attractor_button_pressed():
+	if player_controller.player_souls > 0:
+		_store_grid_cell_menu_item(1)
+		projector._set_mesh(get_grid_cell_menu_item())
 
 # CURSOR HELPER FUNCTIONS
 
@@ -83,6 +97,7 @@ func get_selection_position() -> Vector3:
 #convert collison point intro gridmap coordinate
 func get_ray_grid_intersection() -> Vector3:
 	return get_placement_grid().world_to_map(ray.get_collision_point())
+	
 
 # HANDLE DEPS
 
@@ -93,3 +108,6 @@ func get_placement_grid() -> GridMap:
 		print("Warning: (get_placement_grid) No grid configured, please configure a placement grid configured a default, but it will be ugly...")
 		var placement_grid = GridMap.new()
 		return placement_grid
+
+func _ready():
+	Signals.connect("attractor_button_pressed", self, "_on_attractor_button_pressed")
