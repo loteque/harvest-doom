@@ -1,23 +1,11 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 func open():
 	self.visible = true
 
 func close():
 	self.visible = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# send attractor button signal to the global Signals bus
+func _on_Button_pressed():
+	Signals.emit_signal("attractor_button_pressed")
