@@ -9,7 +9,7 @@ func close():
 # send attractor button signal to the global Signals bus
 func _on_Button_pressed():
 	Signals.emit_signal("attractor_button_pressed")
-
+	Signals.emit_signal("menu_item_selected")
 
 func _on_Button_mouse_entered():
 	Signals.emit_signal("menu_item_hovered")
