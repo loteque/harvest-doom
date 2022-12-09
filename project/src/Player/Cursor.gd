@@ -41,6 +41,7 @@ func _handle_inputs():
 	if Input.is_action_just_pressed("ui_accept") and grid_cell_menu_item == 1 and player_controller.player_souls > 0:
 		selector._place_plant()
 		player_controller.player_souls = player_controller.change_player_souls(EMPTY_MESHLIB_IDX)
+		Signals.emit_signal("attractor_plant_planted")
 		Signals.emit_signal("player_souls_changed", player_controller.player_souls)
 		if player_controller.player_souls == 0:
 			_store_grid_cell_menu_item(EMPTY_MESHLIB_IDX)

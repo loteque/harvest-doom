@@ -16,5 +16,7 @@ script = ExtResource( 2 )
 [node name="RadialMenu" parent="." instance=ExtResource( 1 )]
 
 [node name="DialogUI" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="StartPauseMenu" parent="." instance=ExtResource( 7 )]
+visible = false
